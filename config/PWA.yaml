@@ -1,0 +1,28 @@
+output_dir: /home/528lab/xdh/data/LRN4HCAR/experiments/PWA-SCLR_WCLR_NSLR
+
+dataset:
+  class: order-base
+  path: /home/528lab/xdh/data/LRN4HCAR/datasets/PWA/SCLR_WCLR_NSLR
+
+task:
+  class: LogicalQuery
+  model:
+    class: GNN
+    model:
+      class: NBFNet
+      input_dim: 64
+      hidden_dims: [64,64,64,64]
+  dataset: "PWA"
+
+
+optimizer:
+  class: Adam
+  lr: 2.0e-4
+
+engine:
+  gpus: {{ gpus }}
+  batch_size: 32
+
+train:
+  num_epoch: 12
+  batch_per_epoch: 1024
